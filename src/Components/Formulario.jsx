@@ -1,36 +1,39 @@
 import React from 'react';
-import { useState } from 'react';
 import Boton from './Boton';
 
-const Formulario = () => {
-    const [nombre, setNombre] = useState("")
-    const [password, setPassword] = useState("")
-    const [habilitado, setHabilitado] = useState(true)
+const Formulario = ({nombre, password, cambiarNombre, cambiarPassword}) => {
+    
 
   return (
-    <form className='formulario'>
-        <Input 
-        label='Nombre' 
-        type='text' 
-        placeholder='Nombre' 
-        value='' 
-        setHabilitado={setHabilitado} 
-        />
+    <>
+    <form className='formulario' action="">
+        <div className='form-group mb-3'>
+            <label name='Nombre' htmlFor="">Nombre</label>
+            <input 
+            className='form-control' 
+            type="text" 
+            placeholder='Ingresa tu nombre'
+            value={nombre}
+            onChange={cambiarNombre}
+            />
+            {nombre === '' && password === '252525' ? <p className='text-danger'>Debes ingresar tu nombre</p> : null}
+        </div>
 
+        <div className='form-group mb-3'>
+            <label name='Password' htmlFor="">Contraseña</label>
+            <input 
+            className='form-control' 
+            type="password" 
+            placeholder='Ingresa tu contraseña'
+            value={password}
+            onChange={cambiarPassword}
+            />
+        </div>
 
-        <Input 
-        label='Contraseña' 
-        type='password' 
-        placeholder='Contraseña' 
-        setHabilitado={setHabilitado} 
-        />
+        {password === '252525' ? <Boton inhabilitado={false} /> : <Boton inhabilitado={true} /> }
        
-    
-        <Boton habilitado={habilitado}>Enviar</Boton>
-       
-    
-
     </form>
+  </>
   )
 }
 
