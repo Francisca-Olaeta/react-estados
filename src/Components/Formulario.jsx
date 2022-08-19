@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 import Boton from './Boton';
-import Input from './Input';
 
 const Formulario = () => {
     const [nombre, setNombre] = useState("")
